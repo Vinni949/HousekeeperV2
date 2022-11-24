@@ -1,0 +1,85 @@
+﻿<Window x:Class="HousekeeperV2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HousekeeperV2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Выдать ключ" Width="220">
+                <Grid Background="#FFE5E5E5" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Margin="10,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="ФИО преподователя" HorizontalAlignment="Left" Margin="187,19,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Номер ключа" HorizontalAlignment="Left" Margin="537,19,0,0" VerticalAlignment="Top"/>
+                        <Button x:Name="IssueAKey" Content="Выдать ключ" Margin="0,332,0,0" Click="IssueAKey_Click" HorizontalAlignment="Center" Width="764" Height="44" VerticalAlignment="Top"/>
+
+                        <DataGrid x:Name="TeacherList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,50,0,0" HorizontalAlignment="Left" Width="469" IsReadOnly="True" Height="259" VerticalAlignment="Top"/>
+                        <DataGrid x:Name="KeyList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="501,50,13,0" IsReadOnly="True" Height="259" VerticalAlignment="Top"/>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Выданные ключи" Width="220">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="395*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Height="412" VerticalAlignment="Top" Margin="6,0,0,0" Grid.Column="1">
+                        <Label Content="Выданные ключи" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="25" Width="134"/>
+                        <Button x:Name="returnKey" Content="вернуть ключ" HorizontalAlignment="Center" Margin="0,314,0,0" VerticalAlignment="Top" Width="764" Height="40" Click="returnKey_Click"/>
+                        <ListBox x:Name="returnKeyList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="11,40,11,0" Height="265" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                            <ListBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleY="0.13"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="0.835"/>
+                                </TransformGroup>
+                            </ListBox.RenderTransform>
+                        </ListBox>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Журнал" Width="220">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="395*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Height="412" VerticalAlignment="Top" Margin="6,0,0,0" Grid.Column="1">
+                        <ListBox x:Name="HistorusDay" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="5,0,11,0" Height="392" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                            <ListBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleY="0.13"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="0.835"/>
+                                </TransformGroup>
+                            </ListBox.RenderTransform>
+                        </ListBox>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Админка" Margin="51,-2,-76,0">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="Log_text" HorizontalAlignment="Center" Margin="0,82,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="18" />
+                    <TextBox x:Name="Pas_text" HorizontalAlignment="Center" Margin="0,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                    <Button x:Name="Login" Content="Войти" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="120" Click="Login_Click"/>
+                    <Label Content="Логин" HorizontalAlignment="Center" Margin="0,56,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Пароль" HorizontalAlignment="Center" Margin="0,106,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
